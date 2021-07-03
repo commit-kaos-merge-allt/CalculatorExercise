@@ -1,1 +1,55 @@
 ﻿@page "/"
+
+
+<div class="calculator-container">
+    <div class="top">
+        <div class="calculator-input">
+            <h4>Dunder</h4>
+            <input />
+            <p>@CurrentSum</p>
+        </div>
+        <div class="calculator-operators">
+            <div class="operator" @onclick='() => OperatorInput("+")'>➕</div>
+            <div class="operator" @onclick='() => OperatorInput("-")'>➖</div>
+            <div class="operator" @onclick='() => OperatorInput("x")'>❌</div>
+            <div class="operator" @onclick='() => OperatorInput("/")'>➗</div>
+        </div>
+    </div>
+    <div class="calculator-numbers">
+        <div class="number" @onclick='() => NumberInput("7")'>7</div>
+        <div class="number" @onclick='() => NumberInput("8")'>8</div>
+        <div class="number" @onclick='() => NumberInput("9")'>9</div>
+        <div class="number" @onclick='() => NumberInput("4")'>4</div>
+        <div class="number" @onclick='() => NumberInput("5")'>5</div>
+        <div class="number" @onclick='() => NumberInput("6")'>6</div>
+        <div class="number" @onclick='() => NumberInput("1")'>1</div>
+        <div class="number" @onclick='() => NumberInput("2")'>2</div>
+        <div class="number" @onclick='() => NumberInput("3")'>3</div>
+        <div class="number" @onclick='() => NumberInput("0")'>0</div>
+    </div>
+</div>
+
+@code {
+    private string OperandA { get; set; }
+    private string OperandB { get; set; }
+    private string Operator { get; set; }
+    private int CurrentSum { get; set; } = 0;
+
+    private void OperatorInput(string op)
+    {
+        if (OperandA != null) Operator = op;
+    }
+
+
+    private void NumberInput(string n)
+    {
+        if (String.IsNullOrEmpty(Operator))
+        {
+            OperandA += n;
+        }
+        else OperandB += n;
+
+        Console.WriteLine($"Operand A : {OperandA}, Operator : {Operator}, Operand B : {OperandB}");
+    }
+
+} 

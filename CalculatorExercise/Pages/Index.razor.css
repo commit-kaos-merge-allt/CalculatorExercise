@@ -1,0 +1,146 @@
+﻿div {
+    box-sizing: border-box;
+}
+
+h4 {
+    font-size: 40px;
+}
+
+.calculator-container {
+    display: flex;
+    flex-direction: column;
+    width: 40rem;
+    background-color: rgb(40 103 97 / 0.34);
+    padding: 1rem;
+    border-radius: 1%;
+    overflow: hidden;
+}
+
+.top {
+    width: 100%;
+    display: flex;
+}
+
+.calculator-input {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    justify-content: center;
+    border-bottom: 2px solid gray;
+    border-right: 2px solid gray;
+    border-radius: 2%;
+    overflow: hidden;
+}
+
+.calculator-input input {
+    width: 100%;
+    border: none;
+    background-color: rgb(40 103 97 / 0.5);
+    font-size: 4rem;
+    margin-right: 1rem;
+    text-align: end;
+}
+
+.calculator-input:focus {
+    outline: none;
+    border: none;
+}
+
+.calculator-input p {
+    font-size: 4rem;
+    text-align: end;
+}
+
+.calculator-input h4 {
+    font-size: 4rem;
+}
+
+
+.calculator-operators {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-bottom: 2px solid gray;
+    border-radius: 2%;
+    overflow: hidden;
+}
+
+.operator {
+    width: 50%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    background: linear-gradient(to top, #4caf50, #4caf50 10px, transparent 10px), linear-gradient(to right, #c1ef8c, #c1ef8c 10px, transparent 10px), linear-gradient(to bottom, #8bc34a, #8bc34a 10px, transparent 10px), linear-gradient(to left, #009688, #009688 10px, transparent 10px);
+    background-origin: border-box;
+    background-color: gray;
+}
+
+.operator:hover {
+    cursor: pointer;
+    background-color: darkgray;
+    animation: 500ms calcborder infinite;
+}
+
+.calculator-numbers {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-content: space-around;
+    border-radius: 2%;
+    overflow: hidden;
+}
+
+.number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33.3%;
+    aspect-ratio: 1/1;
+    font-size: 4rem;
+    background: linear-gradient(to top, #4caf50, #4caf50 10px, transparent 10px), linear-gradient(to right, #c1ef8c, #c1ef8c 10px, transparent 10px), linear-gradient(to bottom, #8bc34a, #8bc34a 10px, transparent 10px), linear-gradient(to left, #009688, #009688 10px, transparent 10px);
+    background-origin: border-box;
+    background-color: gray;
+    border-radius: 1%;
+    overflow: hidden;
+}
+
+.number:hover {
+    cursor: pointer;
+    background-color: darkgray;
+    animation: 500ms calcborder infinite;
+}
+
+
+@keyframes calcborder {
+    0% {
+        background: linear-gradient(to top, #4caf50, #4caf50 10px, transparent 10px), linear-gradient(to right, #c1ef8c, #c1ef8c 10px, transparent 10px), linear-gradient(to bottom, #8bc34a, #8bc34a 10px, transparent 10px), linear-gradient(to left, #009688, #009688 10px, transparent 10px);
+        background-color: darkgray;
+    }
+
+    25% {
+        background: linear-gradient(to left, #4caf50, #4caf50 10px, transparent 10px), linear-gradient(to top, #c1ef8c, #c1ef8c 10px, transparent 10px), linear-gradient(to right, #8bc34a, #8bc34a 10px, transparent 10px), linear-gradient(to bottom, #009688, #009688 10px, transparent 10px);
+        background-color: darkgray;
+    }
+
+    50% {
+        background: linear-gradient(to bottom, #4caf50, #4caf50 10px, transparent 10px), linear-gradient(to left, #c1ef8c, #c1ef8c 10px, transparent 10px), linear-gradient(to top, #8bc34a, #8bc34a 10px, transparent 10px), linear-gradient(to right, #009688, #009688 10px, transparent 10px);
+        background-color: darkgray;
+    }
+
+    75% {
+        background: linear-gradient(to right, #4caf50, #4caf50 10px, transparent 10px), linear-gradient(to bottom, #c1ef8c, #c1ef8c 10px, transparent 10px), linear-gradient(to left, #8bc34a, #8bc34a 10px, transparent 10px), linear-gradient(to top, #009688, #009688 10px, transparent 10px);
+        background-color: darkgray;
+    }
+
+    100% {
+        background: linear-gradient(to top, #4caf50, #4caf50 10px, transparent 10px), linear-gradient(to right, #c1ef8c, #c1ef8c 10px, transparent 10px), linear-gradient(to bottom, #8bc34a, #8bc34a 10px, transparent 10px), linear-gradient(to left, #009688, #009688 10px, transparent 10px);
+        background-color: darkgray;
+    }
+}
