@@ -1,18 +1,18 @@
 ﻿@page "/"
 
-
 <div class="calculator-container">
     <div class="top">
         <div class="calculator-input">
             <h4>Dunder</h4>
+            @{/*Lös så input endast uppdateras av siffror med undantag av noll som första siffra*/}
             <input />
             <p>@CurrentSum</p>
         </div>
         <div class="calculator-operators">
-            <div class="operator" @onclick='() => OperatorInput("+")'>➕</div>
-            <div class="operator" @onclick='() => OperatorInput("-")'>➖</div>
-            <div class="operator" @onclick='() => OperatorInput("x")'>❌</div>
-            <div class="operator" @onclick='() => OperatorInput("/")'>➗</div>
+            <div class="operator" @onclick='() => OperatorInput("+")'><span>➕</span></div>
+            <div class="operator" @onclick='() => OperatorInput("-")'><span>➖</span></div>
+            <div class="operator" @onclick='() => OperatorInput("x")'><span>❌</span></div>
+            <div class="operator" @onclick='() => OperatorInput("/")'><span>➗</span></div>
         </div>
     </div>
     <div class="calculator-numbers">
@@ -25,7 +25,9 @@
         <div class="number" @onclick='() => NumberInput("1")'>1</div>
         <div class="number" @onclick='() => NumberInput("2")'>2</div>
         <div class="number" @onclick='() => NumberInput("3")'>3</div>
+        <div class="number">,</div>
         <div class="number" @onclick='() => NumberInput("0")'>0</div>
+        <div class="number" @onclick="Calculate">=</div>
     </div>
 </div>
 
@@ -33,23 +35,30 @@
     private string OperandA { get; set; }
     private string OperandB { get; set; }
     private string Operator { get; set; }
-    private int CurrentSum { get; set; } = 0;
+    private string CurrentSum { get; set; } = "0";
 
     private void OperatorInput(string op)
     {
-        if (OperandA != null) Operator = op;
-    }
+        if (CurrentSum == "0") return;
 
+        Operator = op;
+        OperandA = CurrentSum;
+        CurrentSum = "0";
+    }
 
     private void NumberInput(string n)
     {
-        if (String.IsNullOrEmpty(Operator))
-        {
-            OperandA += n;
-        }
-        else OperandB += n;
+        CurrentSum = CurrentSum == "0" ? n : CurrentSum + n;
+    }
 
-        Console.WriteLine($"Operand A : {OperandA}, Operator : {Operator}, Operand B : {OperandB}");
+    private void Calculate()
+    {
+        // Utför uträkningen och presentera i miniräknaren
+
+        // uträkning kommer här
+
+        // När färdig
+        // CurrentSum = {ditt svar}
     }
 
 } 

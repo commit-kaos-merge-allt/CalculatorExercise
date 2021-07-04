@@ -9,17 +9,25 @@ h4 {
 .calculator-container {
     display: flex;
     flex-direction: column;
-    width: 40rem;
+    width: 35rem;
     background-color: rgb(40 103 97 / 0.34);
     padding: 1rem;
     border-radius: 1%;
     overflow: hidden;
 }
 
+
+
+/* Top half (Input/Operators) */
+
 .top {
     width: 100%;
     display: flex;
 }
+
+
+
+/* Input */
 
 .calculator-input {
     display: flex;
@@ -58,6 +66,9 @@ h4 {
 }
 
 
+
+/* Operators */
+
 .calculator-operators {
     width: 50%;
     display: flex;
@@ -83,8 +94,22 @@ h4 {
 .operator:hover {
     cursor: pointer;
     background-color: darkgray;
-    animation: 500ms calcborder infinite;
+    animation: 200ms calcborder infinite;
 }
+
+.operator span {
+    transform: rotate(0deg);
+    transition: transform 200ms;
+}
+
+.operator span:hover {
+    transform: rotate(180deg);
+    transition: transform 500ms;
+}
+
+
+
+/* Number-Pad*/
 
 .calculator-numbers {
     width: 100%;
@@ -109,14 +134,16 @@ h4 {
     background-color: gray;
     border-radius: 1%;
     overflow: hidden;
+    transition: font-size 100ms;
 }
 
 .number:hover {
     cursor: pointer;
     background-color: darkgray;
     animation: 500ms calcborder infinite;
+    font-size: 5rem;
+    transition: font-size 100ms;
 }
-
 
 @keyframes calcborder {
     0% {
