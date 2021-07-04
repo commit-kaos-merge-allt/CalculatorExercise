@@ -1,36 +1,37 @@
 ﻿@page "/"
 
-<div class="calculator-container">
-    <div class="top">
-        <div class="calculator-input">
-            <h4>Dunder</h4>
-            @{/*Lös så input endast uppdateras av siffror med undantag av noll som första siffra*/}
-            <input />
-            <p>@CurrentSum</p>
+<div class="center">
+    <div class="calculator-container">
+        <div class="top">
+            <div class="calculator-input">
+                <h4>Dunder</h4>
+                @{/*Lös så input endast uppdateras av siffror med undantag av noll som första siffra*/}
+                <input />
+                <p>@CurrentSum</p>
+            </div>
+            <div class="calculator-operators">
+                <div class="operator" @onclick='() => OperatorInput("+")'><span>➕</span></div>
+                <div class="operator" @onclick='() => OperatorInput("-")'><span>➖</span></div>
+                <div class="operator" @onclick='() => OperatorInput("x")'><span>❌</span></div>
+                <div class="operator" @onclick='() => OperatorInput("/")'><span>➗</span></div>
+            </div>
         </div>
-        <div class="calculator-operators">
-            <div class="operator" @onclick='() => OperatorInput("+")'><span>➕</span></div>
-            <div class="operator" @onclick='() => OperatorInput("-")'><span>➖</span></div>
-            <div class="operator" @onclick='() => OperatorInput("x")'><span>❌</span></div>
-            <div class="operator" @onclick='() => OperatorInput("/")'><span>➗</span></div>
+        <div class="calculator-numbers">
+            <div class="number" @onclick='() => NumberInput("7")'>7</div>
+            <div class="number" @onclick='() => NumberInput("8")'>8</div>
+            <div class="number" @onclick='() => NumberInput("9")'>9</div>
+            <div class="number" @onclick='() => NumberInput("4")'>4</div>
+            <div class="number" @onclick='() => NumberInput("5")'>5</div>
+            <div class="number" @onclick='() => NumberInput("6")'>6</div>
+            <div class="number" @onclick='() => NumberInput("1")'>1</div>
+            <div class="number" @onclick='() => NumberInput("2")'>2</div>
+            <div class="number" @onclick='() => NumberInput("3")'>3</div>
+            <div class="number">,</div>
+            <div class="number" @onclick='() => NumberInput("0")'>0</div>
+            <div class="number" @onclick="Calculate">=</div>
         </div>
-    </div>
-    <div class="calculator-numbers">
-        <div class="number" @onclick='() => NumberInput("7")'>7</div>
-        <div class="number" @onclick='() => NumberInput("8")'>8</div>
-        <div class="number" @onclick='() => NumberInput("9")'>9</div>
-        <div class="number" @onclick='() => NumberInput("4")'>4</div>
-        <div class="number" @onclick='() => NumberInput("5")'>5</div>
-        <div class="number" @onclick='() => NumberInput("6")'>6</div>
-        <div class="number" @onclick='() => NumberInput("1")'>1</div>
-        <div class="number" @onclick='() => NumberInput("2")'>2</div>
-        <div class="number" @onclick='() => NumberInput("3")'>3</div>
-        <div class="number">,</div>
-        <div class="number" @onclick='() => NumberInput("0")'>0</div>
-        <div class="number" @onclick="Calculate">=</div>
     </div>
 </div>
-
 @code {
     private string OperandA { get; set; }
     private string OperandB { get; set; }
@@ -42,13 +43,20 @@
         if (CurrentSum == "0") return;
 
         Operator = op;
-        OperandA = CurrentSum;
         CurrentSum = "0";
     }
 
     private void NumberInput(string n)
     {
         CurrentSum = CurrentSum == "0" ? n : CurrentSum + n;
+        if (string.IsNullOrEmpty(Operator))
+        {
+            OperandA = CurrentSum;
+        }
+        if (!string.IsNullOrEmpty(Operator))
+        {
+            OperandB = CurrentSum;
+        }
     }
 
     private void Calculate()
