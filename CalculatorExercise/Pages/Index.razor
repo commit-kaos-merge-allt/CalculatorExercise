@@ -61,6 +61,38 @@
 
     private void Calculate()
     {
+
+        int Op1 = Convert.ToInt32(OperandA);
+        int Op2 = Convert.ToInt32(OperandB);
+
+        if (Operator == "+")
+        {
+            CurrentSum = Convert.ToString(Op1 + Op2);
+
+
+        }
+        if (Operator == "-")
+        {
+            CurrentSum = Convert.ToString(Op1 - Op2);
+
+        }
+        if (Operator == "*")
+        {
+            CurrentSum = Convert.ToString(Op1 * Op2);
+
+        }
+        if (Operator == "/")
+        {
+            CurrentSum = Convert.ToString(Op1 / Op2);
+
+        }
+        // Utför uträkningen och presentera i miniräknaren
+
+        // uträkning kommer här
+
+        // När färdig
+        // CurrentSum = {ditt svar}
+
         // Utför uträkningen och presentera i miniräknaren
 
         // uträkning kommer här
