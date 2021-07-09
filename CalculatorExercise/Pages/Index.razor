@@ -41,6 +41,8 @@
     private void OperatorInput(string op)
     {
         if (CurrentSum == "0") return;
+        if (!String.IsNullOrEmpty(Operator))
+            Calculate();
 
         Operator = op;
         CurrentSum = "0";
@@ -61,12 +63,16 @@
 
     private void Calculate()
     {
-        // Utför uträkningen och presentera i miniräknaren
+        switch (Operator)
+        {
+            case "+": CurrentSum = $"{Convert.ToInt32(OperandA) + Convert.ToInt32(OperandB)}"; break;
+            case "-": CurrentSum = (Convert.ToInt32(OperandA) - Convert.ToInt32(OperandB)).ToString(); break;
+            case "/": CurrentSum = (Convert.ToInt32(OperandA) / Convert.ToInt32(OperandB)).ToString(); break;
+            case "*": CurrentSum = (Convert.ToInt32(OperandA) * Convert.ToInt32(OperandB)).ToString(); break;
+        }
 
-        // uträkning kommer här
-
-        // När färdig
-        // CurrentSum = {ditt svar}
+        OperandA = CurrentSum;
+        Operator = null;
     }
 
 } 
